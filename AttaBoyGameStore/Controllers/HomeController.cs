@@ -1,4 +1,5 @@
 ﻿using AttaBoyGameStore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -24,8 +25,12 @@ namespace AttaBoyGameStore.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
-
+        [AllowAnonymous]
+        public IActionResult Support()
+        {
+            ViewData["title"] = "Need Support";
+            return View();
+        }
 
 
 

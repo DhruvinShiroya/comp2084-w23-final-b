@@ -46,6 +46,7 @@ namespace AttaBoyGameStore.Controllers
                 .Where(p => p.CategoryId == Id)
                 .Include(p => p.Category)
                 .Include(p => p.Brand)
+                .OrderBy(p => p.Name)
                 .ToList();
 
             return View(products);

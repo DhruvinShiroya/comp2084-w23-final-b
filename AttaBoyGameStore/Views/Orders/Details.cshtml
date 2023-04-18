@@ -81,8 +81,10 @@
         <thead>
             <tr>
                 <th>Product</th>
+                <th>Image</th>
                 <th>Quantity</th>
                 <th>Price</th>
+              
             </tr>
         </thead>
         <tbody>
@@ -90,6 +92,15 @@
             {
                 <tr>
                     <td>@orderLine.Product.Name</td>
+                    <td>
+                        @if (orderLine.Product.Image != null)
+                        {
+                            <img src="~/img/products/@orderLine.Product.Image"
+                                 alt="Photo of @orderLine.Product.Name"
+                                 class="thumbnail" />
+                        }
+                    </td>
+                    
                     <td>@orderLine.Quantity</td>
                     <td>@Html.DisplayFor(_ => orderLine.Price)</td>
                 </tr>
