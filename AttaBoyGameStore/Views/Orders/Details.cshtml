@@ -84,7 +84,8 @@
                 <th>Image</th>
                 <th>Quantity</th>
                 <th>Price</th>
-              
+                <th>Price per Item</th>
+
             </tr>
         </thead>
         <tbody>
@@ -105,6 +106,7 @@
                     
                     <td>@orderLine.Quantity</td>
                     <td>@Html.DisplayFor(_ => orderLine.Price)</td>
+                    <td>@Html.DisplayFor(_ => orderLine.Product.Price)</td>
                 </tr>
             }
         </tbody>
