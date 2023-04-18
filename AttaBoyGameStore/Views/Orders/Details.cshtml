@@ -93,12 +93,14 @@
                 <tr>
                     <td>@orderLine.Product.Name</td>
                     <td>
+                        <a href="~/img/products/@orderLine.Product.Image" target="_blank">
                         @if (orderLine.Product.Image != null)
                         {
                             <img src="~/img/products/@orderLine.Product.Image"
                                  alt="Photo of @orderLine.Product.Name"
                                  class="thumbnail" />
                         }
+                        </a>
                     </td>
                     
                     <td>@orderLine.Quantity</td>
