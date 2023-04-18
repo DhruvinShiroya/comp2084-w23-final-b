@@ -192,6 +192,47 @@ namespace AttaBoyGameStoreTests
             Assert.IsNull(_context.Products.Find(product.Id));
 	    }
 
+        [TestMethod]
+        public async Task GetDeleteForValidProductId()
+        {
+            // Arrange
+            var validId = 2;
+
+            //act
+            var result = (ViewResult) await _controller.Delete(validId);
+
+            //assert
+            Assert.IsNull(result.ViewName);
+            // check if the view data is deleted
+            Assert.AreEqual("deleted", result.ViewData["returned"]);
+            Assert.AreEqual(_products.Find( p => p.Id == validId), result.Model);
+            
+        }
+
+        [TestMethod]
+        public async Task PostDeleteConfirmedForValidProductId()
+        {
+            // Arrange
+            var validId = 2;
+
+            //act
+            var result = (RedirectToActionResult) await _controller.DeleteConfirmed(validId);
+
+            //assert
+
+            //check if the product is removed form _context
+            Assert.IsNull( await _context.Products.FindAsync(validId));
+
+            // check the page name of redirection
+
+            Assert.AreEqual("Index", result.ActionName);
+            // check if the view data is deleted
+           // Assert.AreEqual("deleted", result.ViewData["returned"]);
+            
+
+        }
+
+
         private Product CreateSomeProduct()
         { 
             return new Product()

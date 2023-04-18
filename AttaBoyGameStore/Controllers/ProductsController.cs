@@ -172,6 +172,7 @@ namespace AttaBoyGameStore.Controllers
                 return NotFound();
             }
 
+            ViewData["returned"] = "deleted";
             return View(product);
         }
 
